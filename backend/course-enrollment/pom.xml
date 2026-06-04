@@ -31,6 +31,7 @@
     <!-- ===================== -->
     <properties>
         <java.version>25</java.version>
+        <lombok.version>1.18.46</lombok.version>
     </properties>
 
     <!-- ===================== -->
@@ -78,6 +79,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
             <optional>true</optional>
         </dependency>
 
@@ -103,6 +105,21 @@
     <!-- ===================== -->
     <build>
         <plugins>
+            <!-- Maven Compiler Plugin with Lombok annotation processor -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+
             <!-- Spring Boot Maven Plugin (builds executable JAR) -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
